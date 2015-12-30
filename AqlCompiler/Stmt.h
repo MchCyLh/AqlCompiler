@@ -5,6 +5,7 @@
 #include "Token.h"
 #include "Word.h"
 #include "Num.h"
+#include<string>
 
 class Stmt : public Node
 {

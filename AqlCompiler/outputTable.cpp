@@ -1,12 +1,14 @@
 #pragma once
 
 #include "outputTable.h"
+#include <fstream>
 using namespace std;
 
-
 void fengexian(int length) {
+    ofs << "+";
 	cout << "+";
 	for (int i = 0; i < length; i++) {
+        ofs << "-";
 		cout << "-";
 	}
 }
@@ -16,6 +18,7 @@ void totalfengexian(int* maxlen, int colnumsize) {
 	for (int i = 0; i < colnumsize; i++) {
 		fengexian(maxlen[i]);
 	}
+    ofs << "+" << endl;
 	cout << "+" << endl;
 }
 
@@ -45,6 +48,7 @@ int getMaxLength(vector<Record_Cell> v) {
 
 void outputTable(string tablename, Table &table) {
 	int colnumsize = table.size();
+    ofs << "View: " << tablename << endl;
 	cout << "View: " << tablename << endl;
 	map<string, vector<Record_Cell> >::iterator it;
 	string* colnumname = new string[colnumsize];   //列名
@@ -67,11 +71,14 @@ void outputTable(string tablename, Table &table) {
 
 	//打印列名字
 	for (i = 0; i < colnumsize; i++) {
+        ofs << "| " << colnumname[i];
 		cout << "| " << colnumname[i];
 		for (k = 0; k < maxlen[i] - colnumname[i].length() - 1; k++) {
+            ofs << " ";
 			cout << " ";
 		}
 	}
+    ofs << "|" << endl;
 	cout << "|" << endl;
 
 	totalfengexian(maxlen, colnumsize);
@@ -79,24 +86,30 @@ void outputTable(string tablename, Table &table) {
 	for (j = 0; j < maxVectorSize; j++) {
 		for (i = 0; i < colnumsize; i++) {
 			if (j < v[i].size()) {
+                ofs << "| " << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
 				cout << "| " << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
 				//不够最大长度就补空格
 				for (k = 0; k < maxlen[i] - v[i][j].content.length() - 5 - getNumLength(v[i][j].begin) - getNumLength(v[i][j].end); k++) {
-					cout << " ";
+                    ofs << " ";
+                    cout << " ";
 				}
 			}
 			else {
+                ofs << "| ";
 				cout << "| ";
 				for (k = 0; k < maxlen[i] - 1; k++) {
+                    ofs << " ";
 					cout << " ";
 				}
 			}
 		}
+        ofs << "|" << endl;
 		cout << "|" << endl;
 	}
 
 	totalfengexian(maxlen, colnumsize);
 
+    ofs << maxVectorSize << " rows in set" << endl;
 	cout << maxVectorSize << " rows in set" << endl;
 }
 

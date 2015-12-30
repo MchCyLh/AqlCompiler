@@ -42,14 +42,15 @@ public:
         else {
             cout << "Syntax error" << endl;
             // #.抛出异常,输出异常信息到控制台，并且停止整个程序的运行.
-            if (look->tag == Tag::NUM) {
-                Num * num = static_cast<Num *>(look);
-                cout << num->value << " " << num->get_start_num() <<  " " << num->get_stop_num() << endl;
-            } else {
-                Word *word = static_cast<Word *> (look);
-                cout << word->lexeme << " " << word->get_start_num() << " " << word->get_stop_num() << endl;
-            }
-            exit(1);
+			if (look->tag == Tag::NUM) {
+				Num * num = static_cast<Num *>(look);
+				cout << num->value << " " << num->get_start_num() << " " << num->get_stop_num() << endl;
+			}
+			else {
+				Word *word = static_cast<Word *> (look);
+				cout << word->lexeme << " " << word->get_start_num() << " " << word->get_stop_num() << endl;
+			}
+			exit(1);
         }
     }
 
@@ -62,9 +63,7 @@ public:
     Stmt * aql_stmts() {    // aql_stmts ->aql_stmt aql_stmts | e
         if (look->tag == Tag::END) return Stmt::Null;
         else {
-            Word *word = (Word *)(look);
             Stmt *s1 = aql_stmt();
-            word = (Word *)look;
             Stmt *s2 = aql_stmts();
             return new Seq(s1, s2);
         }
@@ -96,7 +95,7 @@ public:
     }
 
     Stmt *view_stmt() { // view_stmt -> select_stmt | extract_stmt
-        // Word * word = (Word *)look;
+        //Word * word = (Word *)look;
         if (look->tag == Tag::SELECT) return select_stmt();
         else return extract_stmt();
     }
@@ -179,9 +178,9 @@ public:
 
     Stmt *regex_spec() {    // regex_spec -> regex REG on column name_spec
         match(Tag::REGEX);
-        Regex_Spec *rs = new Regex_Spec();
+		Regex_Spec *rs = new Regex_Spec();
         Token *t = look;
-        match(Tag::REG);
+		match(Tag::REG);
         match(Tag::ON);
         Stmt *s1 = column();
         Stmt *s2 = name_spec();
@@ -252,6 +251,7 @@ public:
             s3 = pattern_group();
         } else {
             s1 = atom();
+			//Word* w = (Word*)look;
             if (look->tag == '{') {
                 s2 = s1; s1 = Stmt::Null;
                 move(); t1 = look; match(Tag::NUM);
@@ -268,9 +268,12 @@ public:
         Stmt *s = Stmt::Null; Token *t=Token::Null;
         
         if (look->tag == Tag::REG) {
-            match(Tag::REG);
             t = look;
-        } else {
+			match(Tag::REG);
+			Word* w = (Word*)t;
+			string a = w->lexeme;
+		} 
+		else {
             match('<');
             if (look->tag == Tag::TOKEN) {
                 move();
@@ -279,6 +282,9 @@ public:
             }
             match('>');
         }
+		if (s == Stmt::Null && t==Token::Null){
+			return Stmt::Null;
+		}
         a->init(s, t);
         return a;
     }

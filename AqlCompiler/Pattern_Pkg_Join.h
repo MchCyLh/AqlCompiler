@@ -6,5 +6,9 @@ class Pattern_Pkg_Join :
 public:
     Stmt *stmt1, *stmt2;
     Pattern_Pkg_Join(Stmt *s1, Stmt *s2) { stmt1 = s1; stmt2 = s2; }
+	void gen(){
+		stmt1->gen();
+		stmt2->gen();
+	}
 };
 

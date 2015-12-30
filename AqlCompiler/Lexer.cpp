@@ -93,9 +93,9 @@ int choose_type(string temp) {
 	else if (temp == ">") { return temp[0] - 0; }
 	else if (temp == ".") { return temp[0] - 0; }
 	else if (temp == ";") { return temp[0] - 0; }
-    else if (temp == "{") { return temp[0] - 0; }
-    else if (temp == "}") { return temp[0] - 0; }
-    else if (temp == ",") { return temp[0] - 0; }
+	else if (temp == "{") { return temp[0]; }
+	else if (temp == "}") { return temp[0]; }
+	else if (temp == ",") { return temp[0]; }
 	else {
 		bool num = 1;
 		int number = 0;

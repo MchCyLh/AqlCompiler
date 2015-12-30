@@ -10,10 +10,10 @@ public:
     Alias() {}
     void init(Token *t) { id = t; }
     //static Alias *Null;
-    void gen() {
-        Id * id_name = static_cast<Id *>(id);
-        __alias = id_name->lexeme;
-    }
+	void gen() {
+		Id * id_name = static_cast<Id *>(id);
+		__alias = id_name->lexeme;
+	}
 };
 
 

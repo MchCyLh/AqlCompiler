@@ -23,8 +23,8 @@ public:
     int dfs(int cur, int pre_times) {
         if (cur >= __select_list.size()) return 1;
         vector<string> &item = __select_list[cur];
-        Table &table = ntr[__from_list[item[0]]];
-        vector<Record_Cell> &cols = table[item[1]]; // 取列
+		Table &table = ntr[__from_list[item[0]]];
+		vector<Record_Cell> &cols = table[item[1]];// 取列
         string &alias_name = item[2];
         int count = dfs(cur+1, pre_times * cols.size());
         for (int k = 0; k < pre_times; ++k) {
