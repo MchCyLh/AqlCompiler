@@ -42,7 +42,14 @@ public:
         else {
             cout << "Syntax error" << endl;
             // #.抛出异常,输出异常信息到控制台，并且停止整个程序的运行.
-            // exit(1);
+            if (look->tag == Tag::NUM) {
+                Num * num = static_cast<Num *>(look);
+                cout << num->value << endl;
+            } else {
+                Word *word = static_cast<Word *> (look);
+                cout << word->lexeme << endl;
+            }
+            exit(1);
         }
     }
 
@@ -55,7 +62,9 @@ public:
     Stmt * aql_stmts() {    // aql_stmts ->aql_stmt aql_stmts | e
         if (look->tag == Tag::END) return Stmt::Null;
         else {
+            Word *word = (Word *)(look);
             Stmt *s1 = aql_stmt();
+            word = (Word *)look;
             Stmt *s2 = aql_stmts();
             return new Seq(s1, s2);
         }
@@ -169,9 +178,10 @@ public:
     }
 
     Stmt *regex_spec() {    // regex_spec -> regex REG on column name_spec
-        Regex_Spec *rs = new Regex_Spec();
         match(Tag::REGEX);
+        Regex_Spec *rs = new Regex_Spec();
         Token *t = look;
+        match(Tag::REG);
         match(Tag::ON);
         Stmt *s1 = column();
         Stmt *s2 = name_spec();

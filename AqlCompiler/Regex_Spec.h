@@ -30,7 +30,7 @@ public:
                         string &group_name = __groups[k];
                         vector<Record_Cell> &cur_cols = __target_table[group_name];
                         Record_Cell record_cell;
-                        record_cell.content = cols[i].content.substr(result[k], result[k + 1]);
+                        record_cell.content = cols[i].content.substr(result[k], result[k + 1] - result[k]);
                         record_cell.begin = result[k];
                         record_cell.end = result[k + 1];
                         cur_cols.push_back(record_cell);
