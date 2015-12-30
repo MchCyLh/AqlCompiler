@@ -44,10 +44,10 @@ public:
             // #.抛出异常,输出异常信息到控制台，并且停止整个程序的运行.
             if (look->tag == Tag::NUM) {
                 Num * num = static_cast<Num *>(look);
-                cout << num->value << endl;
+                cout << num->value << " " << num->get_start_num() <<  " " << num->get_stop_num() << endl;
             } else {
                 Word *word = static_cast<Word *> (look);
-                cout << word->lexeme << endl;
+                cout << word->lexeme << " " << word->get_start_num() << " " << word->get_stop_num() << endl;
             }
             exit(1);
         }
@@ -237,7 +237,7 @@ public:
     
     Stmt *pattern_expr() {  // pattern_expr → pattern_pkg | pattern_expr pattern_pkg
         Stmt *s = pattern_pkg();
-        while (look->tag == '(' || look->tag == '<' || look->tag == Tag::REGEX) {
+        while (look->tag == '(' || look->tag == '<' || look->tag == Tag::REG) {
             s = new Pattern_Pkg_Join(s, pattern_pkg());
         }
         return s;
@@ -267,8 +267,8 @@ public:
         Atom *a = new Atom();
         Stmt *s = Stmt::Null; Token *t=Token::Null;
         
-        if (look->tag == Tag::REGEX) {
-            match(Tag::REGEX);
+        if (look->tag == Tag::REG) {
+            match(Tag::REG);
             t = look;
         } else {
             match('<');
