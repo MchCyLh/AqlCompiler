@@ -19,7 +19,6 @@ int main() {
     record_cell.end = record_cell.content.size();
     cols.push_back(record_cell);
 
-    
     string aql_name = "test.aql";
     Lexer *lexer = new Lexer(aql_name);
     Parser parser(lexer);

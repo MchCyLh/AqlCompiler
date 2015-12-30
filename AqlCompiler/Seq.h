@@ -10,6 +10,7 @@ public:
 
     void gen() {
         if (stmt1 != Stmt::Null) stmt1->gen();
+        globalInit();
         if (stmt2 != Stmt::Null) stmt2->gen();
     }
 };
