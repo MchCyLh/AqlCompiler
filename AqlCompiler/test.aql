@@ -1,0 +1,5 @@
+create view Cap as
+	extract regex /[A-Z][a-z]*/
+	on D.text as Cap
+	from Ducument D;
+output view Cap as CAP;
