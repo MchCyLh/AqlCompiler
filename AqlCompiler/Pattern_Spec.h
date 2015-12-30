@@ -13,6 +13,9 @@ public:
 	void gen(){
 		stmt2->gen();
 		stmt1->gen();
+		//for (int i = 0; i < pattern_spec[0].size(); i++){
+		//	dfs(1, pattern_spec[0][i].content);
+		//}
 		dfs(0, "");
 		pattern_spec.clear();
 	}
@@ -44,7 +47,7 @@ public:
 		}
 		else{
 			for (int i = 0; i < pattern_spec[deep].size(); i++){
-				dfs(deep + 1, re + pattern_spec[deep][i].content+"[ ]?");
+				dfs(deep + 1, re + pattern_spec[deep][i].content+"[ ]*?");
 			}
 		}
 	}
