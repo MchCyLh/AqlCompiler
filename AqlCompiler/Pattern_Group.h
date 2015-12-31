@@ -8,6 +8,9 @@ class Pattern_Group :
 public:
     Stmt *s;
     Pattern_Group() {}
+    ~Pattern_Group() {
+        delete s; s = Stmt::Null;
+    }
     void init(Stmt * s_) { s = s_; }
 	void gen(){
 		/*vector<Record_Cell> lbrach;

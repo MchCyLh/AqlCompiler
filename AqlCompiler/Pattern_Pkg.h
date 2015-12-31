@@ -9,6 +9,13 @@ public:
     Stmt *stmt1, *stmt2, *stmt3;
     Token *num1, *num2;
     Pattern_Pkg() {}
+    ~Pattern_Pkg() {
+        delete stmt1; stmt1 = Stmt::Null;
+        delete stmt2; stmt2 = Stmt::Null;
+        delete stmt3; stmt3 = Stmt::Null;
+        delete num1; num1 = Token::Null;
+        delete num2; num2 = Token::Null;
+    }
     void init(Stmt *s1, Stmt *s2, Token *t1, Token *t2, Stmt *s3) {
         stmt1 = s1;
         stmt2 = s2;

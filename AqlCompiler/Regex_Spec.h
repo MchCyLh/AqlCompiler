@@ -10,6 +10,11 @@ public:
     Token *reg;
     Stmt *stmt1, *stmt2;
     Regex_Spec() {}
+    ~Regex_Spec() {
+        delete reg; reg = Token::Null;
+        delete stmt1; stmt1 = Stmt::Null;
+        delete stmt2; stmt2 = Stmt::Null;
+    }
     void init(Token *t, Stmt *s1, Stmt *s2) { reg = t; stmt1 = s1; stmt2 = s2; }
 	void gen() {
 		Reg *regex = static_cast<Reg *>(reg);   //

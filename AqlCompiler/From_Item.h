@@ -13,6 +13,10 @@ class From_Item : public Stmt
 public:
     Token *id1, *id2;
     From_Item() {}
+    ~From_Item() {
+        delete id1; id1 = Token::Null;
+        delete id2; id2 = Token::Null;
+    }
     void init(Token *t1, Token *t2) { id1 = t1; id2 = t2; }
     //static From_Item *Null;
 
@@ -24,10 +28,6 @@ public:
         __from_list.insert(make_pair(id2_name, id1_name));
     }
 
-    void Delete() {
-        delete id1; id1 = Token::Null;
-        delete id2; id2 = Token::Null;
-    }
 };
 
 #endif

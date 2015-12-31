@@ -10,6 +10,10 @@ class Atom :
 public:
     Stmt *s; Token *reg;
     Atom() {}
+    ~Atom() {
+        delete s; s = Stmt::Null;
+        delete reg; reg = Token::Null;
+    }
     void init(Stmt *s_, Token *t) { s = s_; reg = t; }
 	void gen(){
 		if (s != Stmt::Null){//multiple token

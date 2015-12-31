@@ -26,7 +26,6 @@ public:
 
     static Token *Null;
 
-    virtual void Delete() {}
 private:
 	string token;
 	int start = 0;

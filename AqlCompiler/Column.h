@@ -8,6 +8,10 @@ class Column :
 public:
     Token *id1, *id2;
     Column() {}
+    ~Column() {
+        delete id1; id1 = Token::Null;
+        delete id2; id2 = Token::Null;
+    }
     void init(Token *t1, Token *t2) { id1 = t1; id2 = t2; }
 	void gen() {
 		Id * id = static_cast<Id *>(id1);
@@ -16,10 +20,6 @@ public:
 		__column.second = id->lexeme;
 	}
 
-    void Delete() {
-        delete id1; id1 = Token::Null;
-        delete id2; id2 = Token::Null;
-    }
 };
 
 #endif

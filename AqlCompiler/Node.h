@@ -5,7 +5,6 @@
 class Node 
 {
 public:
-    int lexline = 0;
     Node() { }
 };
 

@@ -16,7 +16,7 @@ public:
     virtual void gen() {}
     virtual void Delete() {}
 
-    // virtual ~Stmt() {}
+    ~Stmt() {}
 };
 
 #endif

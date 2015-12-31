@@ -14,6 +14,10 @@ public:
     Token *t;
     Stmt *v_stmt;
     Create_Stmt() {}
+    ~Create_Stmt() {
+        delete t; t = Token::Null;
+        delete v_stmt; v_stmt = Stmt::Null;
+    }
     void init(Token *t_, Stmt *s) {
         t = t_;
         v_stmt = s;
@@ -26,10 +30,6 @@ public:
         ntr.insert(make_pair(table_name, __target_table));
     }
 
-    void Delete() {
-        delete t; t = Token::Null;
-        v_stmt->Delete(); delete v_stmt; v_stmt = Stmt::Null;
-    }
 };
 
 #endif

@@ -11,6 +11,10 @@ public:
     Token *id;
     Stmt *s;
     Name_Spec() {}
+    ~Name_Spec() {
+        delete id; id = Token::Null;
+        delete s; s = Stmt::Null;
+    }
     void init(Token *t) { id = t; s = Stmt::Null; }
     void init(Stmt *s_) { s = s_; id = Token::Null; }
 	void gen() {
@@ -23,11 +27,6 @@ public:
 			__groups[0] = name;
 		}
 	}
-
-    void Delete() {
-        delete id; id = Token::Null;
-        s->Delete(); delete s; s = Stmt::Null;
-    }
 };
 
 #endif

@@ -12,6 +12,10 @@ class Pattern_Spec :
 public:
     Stmt *stmt1, *stmt2;
     Pattern_Spec() {}
+    ~Pattern_Spec() {
+        delete stmt1; stmt1 = Stmt::Null;
+        delete stmt2; stmt2 = Stmt::Null;
+    }
     void init(Stmt *s1, Stmt *s2) { stmt1 = s1; stmt2 = s2; }
 	void gen(){
 		stmt2->gen();

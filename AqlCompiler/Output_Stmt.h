@@ -14,6 +14,10 @@ public:
     Token *id;
     Stmt *als;
     Output_Stmt() {}
+    ~Output_Stmt() {
+        delete id; id = Token::Null;
+        delete als; als = Stmt::Null;
+    }
     void init(Token *t, Stmt *s) { id = t; als = s; }
 
     void gen() {
@@ -22,10 +26,6 @@ public:
         outputTable(alias_name, ntr[name->lexeme]);
     }
 
-    void Delete() {
-        delete id; id = Token::Null;
-        als->Delete(); delete als; als = Stmt::Null;
-    }
 };
 
 #endif

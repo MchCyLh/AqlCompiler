@@ -62,6 +62,8 @@ public:
         Stmt *s = aql_stmts();
         // #.对语法树进行处理
         s->gen();   // Seq-gen();
+
+        delete s; s = Stmt::Null;
     }
 
     Stmt * aql_stmts() {    // aql_stmts ->aql_stmt aql_stmts | e

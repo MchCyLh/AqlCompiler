@@ -17,9 +17,8 @@ public:
 		__alias = id_name->lexeme;
 	}
 
-    void Delete() {
-        delete id;
-        id = Token::Null;
+    ~Alias() {
+        delete id; id = Token::Null;
     }
 };
 

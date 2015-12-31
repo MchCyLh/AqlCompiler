@@ -11,6 +11,10 @@ class Select_Stmt : public Stmt
 public:
     Stmt * stmt1, *stmt2;
     Select_Stmt() {}
+    ~Select_Stmt() {
+        delete stmt1; stmt1 = Stmt::Null;
+        delete stmt2; stmt2 = Stmt::Null;
+    }
     void init(Stmt * s1, Stmt *s2) { stmt1 = s1; stmt2 = s2; }
 
     void gen() {
