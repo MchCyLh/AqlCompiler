@@ -40,7 +40,12 @@ public:
     }
     //void setLook(Token *t) { delete look; look = t; }   // 设置look，删除原来的对象，防止内存泄露
     Parser(Lexer *l) { lex = l; move(); }
-    void move() { look = lex->scan(); } // 移动到下一个Token
+    void move() {
+        if (look != Token::Null && !(look->tag == Tag::ID || look->tag == Tag::REG || look->tag == Tag::NUM)) {
+            delete look; look = Token::Null;
+        }
+        look = lex->scan();
+    } // 移动到下一个Token
     void match(int t) { // 匹配Token类型是否为t
         if (look->tag == t) move();
         else {
