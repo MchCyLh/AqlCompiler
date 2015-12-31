@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TAG_H
+#define TAG_H
+
 class Tag
 {
 public:
@@ -9,3 +11,4 @@ public:
         ID = 271, NUM = 272, REG = 273;
 };
 
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef REGEX_SPEC_H
+#define REGEX_SPEC_H
+
 #include "Stmt.h"
 #include "TypeDefine.h"
 class Regex_Spec :
@@ -39,3 +41,4 @@ public:
 	}
 };
 
+#endif

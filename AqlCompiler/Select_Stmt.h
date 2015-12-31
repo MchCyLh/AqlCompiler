@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SELECT_STMT_H
+#define SELECT_STMT_H
+
 #include "Stmt.h"
 #include "TypeDefine.h"
 #include <string>
@@ -39,3 +41,4 @@ public:
 
 };
 
+#endif

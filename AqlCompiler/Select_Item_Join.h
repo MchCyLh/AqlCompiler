@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SELECT_ITEM_JOIN_H
+#define SELECT_ITEM_JOIN_H
 #include "Stmt.h"
 class Select_Item_Join : public Stmt
 {
@@ -12,3 +13,5 @@ public:
         stmt2->gen(); // Select_Item_Join->gen();
     }
 };
+
+#endif

@@ -1,4 +1,7 @@
-#pragma once
+#ifndef CREATE_STMT_H
+#define CREATE_STMT_H
+
+
 #include "Stmt.h"
 #include "Word.h"
 #include "Select_Stmt.h"
@@ -22,5 +25,11 @@ public:
         v_stmt->gen();  // Select_Stmt->gen() | Extract_Stmt->gen();
         ntr.insert(make_pair(table_name, __target_table));
     }
+
+    void Delete() {
+        delete t; t = Token::Null;
+        v_stmt->Delete(); delete v_stmt; v_stmt = Stmt::Null;
+    }
 };
 
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SEQ_H
+#define SEQ_H
 
 #include "Stmt.h"
 #include "TypeDefine.h"
@@ -16,3 +17,4 @@ public:
 		}
 };
 
+#endif

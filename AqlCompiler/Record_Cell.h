@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RECORD_CELL_H
+#define RECORD_CELL_H
 #include <string>
 using std::string;
 
@@ -12,3 +13,4 @@ public:
     Record_Cell(const string &s, int b, int e) : content(s), begin(b), end(e) {}
 };
 
+#endif

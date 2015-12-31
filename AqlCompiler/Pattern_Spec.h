@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATTERN_SPEC_H
+#define PATTERN_SPEC_H
 #include "Stmt.h"
 #include "regex.h"
 #include<iostream>
@@ -53,3 +54,4 @@ public:
 	}
 };
 
+#endif

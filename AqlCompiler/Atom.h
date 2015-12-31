@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ATOM_H
+#define ATOM_H
+
 #include "Stmt.h"
 #include "Token.h"
 
@@ -51,5 +53,11 @@ public:
 			pattern_spec.push_back(temp);
 		}
 	}
+
+    void Delete() {
+        // s->Delete(); delete s; s = Stmt::Null;
+        // delete reg; reg = Token::Null;
+    }
 };
 
+#endif

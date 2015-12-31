@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COLUMN_H
+#define COLUMN_H
 #include "Stmt.h"
 #include "Token.h"
 class Column :
@@ -14,5 +15,11 @@ public:
 		id = static_cast<Id *>(id2);
 		__column.second = id->lexeme;
 	}
+
+    void Delete() {
+        delete id1; id1 = Token::Null;
+        delete id2; id2 = Token::Null;
+    }
 };
 
+#endif

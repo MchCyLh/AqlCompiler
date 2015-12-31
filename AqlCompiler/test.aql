@@ -9,7 +9,7 @@ create view Unit as
 	from Document D;
 
 create view Money as 
-	extract pattern ( /$?/ ) (<N.number>) (<U.unit>) 
+	extract pattern (/$?/) (<N.number>) (<U.unit>) 
 		return group 0 as money
 		   and group 1 as dollar
 		   and group 2 as number

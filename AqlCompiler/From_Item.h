@@ -1,4 +1,6 @@
-#pragma once
+#ifndef FROM_ITEM_H
+#define FROM_ITEM_H
+
 #include "Stmt.h"
 #include "Token.h"
 #include "Word.h"
@@ -21,6 +23,11 @@ public:
         string id2_name = id->lexeme;
         __from_list.insert(make_pair(id2_name, id1_name));
     }
+
+    void Delete() {
+        delete id1; id1 = Token::Null;
+        delete id2; id2 = Token::Null;
+    }
 };
 
-
+#endif

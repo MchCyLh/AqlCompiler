@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SINGLE_GROUP_JOIN_H
+#define SINGLE_GROUP_JOIN_H
+
 #include "Stmt.h"
 class Single_Group_Join :
     public Stmt
@@ -12,3 +14,4 @@ public:
 	}
 };
 
+#endif

@@ -34,6 +34,10 @@ private:
     Lexer *lex; // 词法分析器
     Token *look;    // 下一个Token
 public:
+    ~Parser() {
+        delete lex; lex = NULL;
+        delete look; look = Token::Null;
+    }
     //void setLook(Token *t) { delete look; look = t; }   // 设置look，删除原来的对象，防止内存泄露
     Parser(Lexer *l) { lex = l; move(); }
     void move() { look = lex->scan(); } // 移动到下一个Token

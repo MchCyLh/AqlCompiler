@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATTERN_GROUP_H
+#define PATTERN_GROUP_H
 #include "Stmt.h"
 class Pattern_Group :
     public Stmt
@@ -23,5 +24,10 @@ public:
 			pattern_spec[pattern_spec.size() - 1][i].content = reg;
 		}
 	}
+
+    void Delete() {
+        s->Delete(); delete s; s = Stmt::Null;
+    }
 };
 
+#endif

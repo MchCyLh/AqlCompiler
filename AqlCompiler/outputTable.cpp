@@ -16,7 +16,7 @@ void fengexian(int length) {
 //打印分割线
 void totalfengexian(int* maxlen, int colnumsize) {
 	for (int i = 0; i < colnumsize; i++) {
-		fengexian(maxlen[i]);
+		fengexian(maxlen[i]-1);
 	}
     ofs << "+" << endl;
 	cout << "+" << endl;
@@ -28,7 +28,7 @@ int getNumLength(int num) {
 	do {
 		len++;
 		num /= 10;
-	} while (num / 10 > 0);
+	} while (num > 0);
 	return len;
 }
 
@@ -73,7 +73,7 @@ void outputTable(string tablename, Table &table) {
 	for (i = 0; i < colnumsize; i++) {
         ofs << "| " << colnumname[i];
 		cout << "| " << colnumname[i];
-		for (k = 0; k < maxlen[i] - colnumname[i].length() - 1; k++) {
+		for (k = 0; k < maxlen[i] - colnumname[i].length()-2; k++) {
             ofs << " ";
 			cout << " ";
 		}
@@ -86,8 +86,8 @@ void outputTable(string tablename, Table &table) {
 	for (j = 0; j < maxVectorSize; j++) {
 		for (i = 0; i < colnumsize; i++) {
 			if (j < v[i].size()) {
-                ofs << "| " << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
-				cout << "| " << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
+                ofs << "|" << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
+				cout << "|" << v[i][j].content << ":(" << v[i][j].begin << "," << v[i][j].end << ")";
 				//不够最大长度就补空格
 				for (k = 0; k < maxlen[i] - v[i][j].content.length() - 5 - getNumLength(v[i][j].begin) - getNumLength(v[i][j].end); k++) {
                     ofs << " ";
@@ -97,7 +97,7 @@ void outputTable(string tablename, Table &table) {
 			else {
                 ofs << "| ";
 				cout << "| ";
-				for (k = 0; k < maxlen[i] - 1; k++) {
+				for (k = 0; k < maxlen[i]-1; k++) {
                     ofs << " ";
 					cout << " ";
 				}

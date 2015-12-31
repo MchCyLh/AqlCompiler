@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WORD_H
+#define WORD_H
 #include "Token.h"
 #include <string>
 using std::string;
@@ -13,3 +14,5 @@ public:
 
 typedef Word Id;
 typedef Word Reg;
+
+#endif

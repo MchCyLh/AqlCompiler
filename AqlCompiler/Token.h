@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TOKEN_H
+#define TOKEN_H
 
 #include <iostream>
 #include <string>
@@ -24,9 +25,12 @@ public:
     int tag = 271;
 
     static Token *Null;
+
+    virtual void Delete() {}
 private:
 	string token;
 	int start = 0;
 	int stop = 0;
 };
 
+#endif

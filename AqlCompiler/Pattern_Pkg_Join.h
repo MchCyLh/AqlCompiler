@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PATTERN_PKG_JOIN_H
+#define PATTERN_PKG_JOIN_H
 #include "Stmt.h"
 class Pattern_Pkg_Join :
     public Stmt
@@ -12,3 +13,4 @@ public:
 	}
 };
 
+#endif

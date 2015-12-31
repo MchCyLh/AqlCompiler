@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NAME_SPEC_H
+#define NAME_SPEC_H
+
 #include "Stmt.h"
 #include "Token.h"
 
@@ -21,5 +23,11 @@ public:
 			__groups[0] = name;
 		}
 	}
+
+    void Delete() {
+        delete id; id = Token::Null;
+        s->Delete(); delete s; s = Stmt::Null;
+    }
 };
 
+#endif

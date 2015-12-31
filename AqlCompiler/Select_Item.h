@@ -1,4 +1,6 @@
-#pragma once
+#ifndef SELECT_ITEM_H
+#define SELECT_ITEM_H
+
 #include "Stmt.h"
 #include "Alias.h"
 class Select_Item : public Stmt
@@ -22,3 +24,4 @@ public:
 };
 
 
+#endif

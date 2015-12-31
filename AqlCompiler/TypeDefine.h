@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TYPEDEFINE_H
+#define TYPEDEFINE_H
 
 #include <map>
 #include <string>
@@ -27,3 +28,5 @@ extern const char* text;
 void globalInit();
 
 extern ofstream ofs;
+
+#endif

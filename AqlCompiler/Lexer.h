@@ -1,3 +1,6 @@
+#ifndef LEXER_H
+#define LEXER_H
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -11,6 +14,9 @@ class Lexer {
 public:
 	Lexer(string file_path);
 	Token* scan();
+    ~Lexer() {
+        fin.close();
+    }
 private:
 	int row = 0;
 	int col = -1;
@@ -19,3 +25,5 @@ private:
 };
 
 int choose_type(string temp);
+
+#endif

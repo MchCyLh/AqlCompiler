@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PATTERN_PKG_H
+#define PATTERN_PKG_H
+
 #include "Stmt.h"
 class Pattern_Pkg :
     public Stmt
@@ -78,5 +80,10 @@ public:
 			pattern_spec.push_back(r);
 		}
 	}
+
+    void Delete() {
+        
+    }
 };
 
+#endif

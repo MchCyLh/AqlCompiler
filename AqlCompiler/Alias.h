@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ALIAS_H
+#define ALIAS_H
+
 #include "Stmt.h"
 #include "Token.h"
 
@@ -6,7 +8,7 @@ class Alias :
     public Stmt
 {
 public:
-    Token *id;
+    Token *id = Token::Null;
     Alias() {}
     void init(Token *t) { id = t; }
     //static Alias *Null;
@@ -14,6 +16,12 @@ public:
 		Id * id_name = static_cast<Id *>(id);
 		__alias = id_name->lexeme;
 	}
+
+    void Delete() {
+        delete id;
+        id = Token::Null;
+    }
 };
 
+#endif
 

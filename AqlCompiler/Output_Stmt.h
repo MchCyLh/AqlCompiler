@@ -1,4 +1,6 @@
-#pragma once
+#ifndef OUTPUT_STMT_H
+#define OUTPUT_STMT_H
+
 #include "Stmt.h"
 #include "outputTable.h"
 #include "TypeDefine.h"
@@ -19,5 +21,11 @@ public:
 		string alias_name = (als == Alias::Null ? name->lexeme : (als->gen(), __alias));
         outputTable(alias_name, ntr[name->lexeme]);
     }
+
+    void Delete() {
+        delete id; id = Token::Null;
+        als->Delete(); delete als; als = Stmt::Null;
+    }
 };
 
+#endif

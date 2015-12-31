@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NUM_H
+#define NUM_H
+
 #include "Token.h"
 #include "Tag.h"
 class Num :
@@ -22,3 +24,4 @@ public:
 	}
 };
 
+#endif
