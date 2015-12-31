@@ -29,7 +29,8 @@ extern const char* text;
 extern int group_num;
 
 extern map<int, int> __isgroup;
-
+extern map<int, pair<int, int> >__pattern_group;
+extern vector<pair<char, int> >__pattern_group_vector;
 extern ofstream ofs;
 extern Tokenizer *tokenizer;
 

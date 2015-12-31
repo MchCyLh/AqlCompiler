@@ -17,9 +17,12 @@ public:
 		Record_Cell l("(", 0, 0);
 		lbrach.push_back(l);
 		pattern_spec.push_back(lbrach);*/
-		group_num++;
+		//group_num++;
+		__pattern_group_vector.push_back(make_pair('(', pattern_spec.size() ));
+
 		s->gen();
-		group_num--;
+		
+		__pattern_group_vector.push_back(make_pair(')', pattern_spec.size()));
 		/*vector<Record_Cell> rbrach;
 		Record_Cell r(")", 0, 0);
 		rbrach.push_back(r);

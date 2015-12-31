@@ -15,6 +15,8 @@ const string NoNeed = "";
 map<int, int> __isgroup;
 int group_num = 0;
 
+map<int, pair<int, int> >__pattern_group;
+vector<pair<char, int> > __pattern_group_vector;
 ofstream ofs;
 Tokenizer *tokenizer;
 
@@ -24,4 +26,7 @@ void globalInit() {
 	__target_table.clear();
 	__groups.clear();
 	__alias = "";
+	__pattern_group_vector.clear();
+	__pattern_group.clear();
+	pattern_spec.clear();
 }
