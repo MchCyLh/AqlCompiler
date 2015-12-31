@@ -1,5 +1,5 @@
-#ifndef PATTERN_PKG_H
-#define PATTERN_PKG_H
+#ifndef PATTERN_PKG
+#define PATTERN_PKG
 
 #include "Stmt.h"
 class Pattern_Pkg :
@@ -54,36 +54,12 @@ public:
 		else{//multiple token
 			Num* t1 = static_cast<Num *>(num1);
 			Num* t2 = static_cast<Num *>(num2);
-			string reg = "(?:[a-zA-Z0-9]+|[,])";
-			if (t1->value == 0){//{0,x},so that reg*
-				reg += "?";
-				string temp = reg;
-				for (int i = 1; i < t2->value; i++){
-					reg += temp; //reg*reg*...
-				}
-			}
-			else{//{x,y},ps,x>0
-				string temp1 = reg; // use for min
-				string temp2 = reg + "?"; // use for max
-				int min = t1->value;
-				int max = t2->value;
-				for (int i = 1; i < min; i++){
-					reg += temp1;
-				}
-				for (int i = min; i < max; i++){
-					reg += temp2;
-				}
-			}
-			Record_Cell numof(reg, 0, 0);
+			Record_Cell numof("", t1->value, t2->value);
 			vector<Record_Cell> r;
 			r.push_back(numof);
 			pattern_spec.push_back(r);
 		}
 	}
-
-    void Delete() {
-        
-    }
 };
 
 #endif

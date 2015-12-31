@@ -1,4 +1,6 @@
-#pragma once
+#ifndef OUTPUT_TABLE_H
+#define OUTPUT_TABLE_H
+
 #include<iostream>
 #include<vector>
 #include<map>
@@ -10,3 +12,4 @@ using namespace std;
 
 void outputTable(string tablename, Table &table);
 
+#endif

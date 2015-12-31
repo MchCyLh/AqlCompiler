@@ -11,73 +11,80 @@ Lexer::Lexer(string file_path) {
 		exit(1);
 	}
 }
+
 Token* Lexer::scan() {
-    char ch;
-    string token_string = "";
-    int token_type = 0;
-    while (fin.get(ch)) {
-        col++;
-        if (is_regex == 0) {
-            if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-                token_string += ch;
-                if (fin.peek()) {
-                    ch = fin.peek();
-                    if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
-                    } else {
-                        token_type = choose_type(token_string);
-                        break;
-                    }
-                }
-            } else if (ch == 32 || ch == 13 || ch == 10 || ch == '\t') {
-                if (ch == 10) {
-                    row++;
-                    col = 0;
-                }
-            } else if (ch == 47) {
-                is_regex = 1;
-            } else {
-                token_string += ch;
-                token_type = choose_type(token_string);
-                break;
-            }
-        } else {
-            if (ch == 47) {
-                is_regex = 0;
-                token_type = Tag::REG;
-                break;
-            } else {
-                if (ch == '\\') {
-                    token_string += ch;
-                    ch = fin.peek();
-                    if (ch == '/') {
-                        fin.get(ch);
-                        token_string += ch;
-                        col++;
-                    }
-                } else {
-                    token_string += ch;
-                }
-            }
-        }
-    }
-    if (token_string == "") {
-        Token* end_token = new Token(Tag::END);
-        return end_token;
-    }
-    if (token_type == Tag::NUM) {
-        int number = 0;
-        for (int i = 0; i < token_string.length(); i++) {
-            number += (token_string[i] - '0')*pow(10, (token_string.length() - i - 1));
-        }
-        Num* num_token = new Num(number);
-        num_token->setType(Tag::NUM);
-        num_token->set_time(row, col);
-        return num_token;
-    } else {
-        Word* word_token = new Word(token_string, token_type);
-        word_token->set_time(row, col);
-        return word_token;
-    }
+	char ch;
+	string token_string = "";
+	int token_type = 0;
+	while (fin.get(ch)) {
+		col++;
+		if (is_regex == 0) {
+			if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+				token_string += ch;
+				if (fin.peek()) {
+					ch = fin.peek();
+					if ((ch >= '0' && ch <= '9') || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+					}
+					else {
+						token_type = choose_type(token_string);
+						break;
+					}
+				}
+			}
+			else if (ch == 32 || ch == 13 || ch == 10 || ch == '\t') {
+				if (ch == 10) {
+					row++;
+					col = 0;
+				}
+			}
+			else if (ch == 47){
+				is_regex = 1;
+			}
+			else {
+				token_string += ch;
+				token_type = choose_type(token_string);
+				break;
+			}
+		}
+		else {
+			if (ch == 47) {
+				is_regex = 0;
+				token_type = Tag::REG;
+				break;
+			} else {
+				if (ch == '\\') {
+					token_string += ch;
+					ch = fin.peek();
+					if (ch == '/') {
+						fin.get(ch);
+						token_string += ch;
+						col++;
+					}
+				} else{
+					token_string += ch;
+				}
+			}
+		}
+	}
+	if (token_string == "") {
+		Token* end_token = new Token(Tag::END);
+		return end_token;
+	}
+	if (token_type == Tag::NUM) {
+		int number = 0;
+		for (int i = 0; i < token_string.length(); i++) {
+			number += (token_string[i] - '0')*pow(10, (token_string.length() - i - 1));
+		}
+		Num* num_token = new Num(number);
+		num_token->setType(Tag::NUM);
+		num_token->set_time(row, col);
+		return num_token;
+	}
+	else {
+		Word* word_token = new Word(token_string, token_type);
+		word_token->set_time(row, col);
+		return word_token;
+	}
 }
 
 int choose_type(string temp) {
@@ -120,4 +127,8 @@ int choose_type(string temp) {
 			return Tag::ID;
 		}
 	}
+}
+
+Lexer::~Lexer(){
+	fin.close();
 }

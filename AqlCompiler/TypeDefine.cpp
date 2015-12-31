@@ -12,8 +12,11 @@ vector<vector<Record_Cell> > pattern_spec;
 
 map<int, string> __groups;
 const string NoNeed = "";
+map<int, int> __isgroup;
+int group_num = 0;
 
 ofstream ofs;
+Tokenizer *tokenizer;
 
 void globalInit() {
 	__from_list.clear();

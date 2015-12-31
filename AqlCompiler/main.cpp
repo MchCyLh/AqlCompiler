@@ -1,5 +1,6 @@
 #include "Parser.h"
 #include "regex.h"
+#include "TypeDefine.h"
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -21,6 +22,7 @@ int main() {
 	cols.push_back(record_cell);
 
     ofs.open("document.output");
+    tokenizer = new Tokenizer(document);
 
     string aql_name = "test.aql";
     Lexer *lexer = new Lexer(aql_name);

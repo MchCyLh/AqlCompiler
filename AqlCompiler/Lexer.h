@@ -1,6 +1,3 @@
-#ifndef LEXER_H
-#define LEXER_H
-
 #include<iostream>
 #include<vector>
 #include<string>
@@ -13,10 +10,8 @@ using namespace std;
 class Lexer {
 public:
 	Lexer(string file_path);
+	~Lexer();
 	Token* scan();
-    ~Lexer() {
-        fin.close();
-    }
 private:
 	int row = 0;
 	int col = -1;
@@ -25,5 +20,3 @@ private:
 };
 
 int choose_type(string temp);
-
-#endif

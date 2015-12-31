@@ -1,5 +1,5 @@
-#ifndef TYPEDEFINE_H
-#define TYPEDEFINE_H
+#ifndef TYPE_DEFINE_H
+#define TYPE_DEFINE_H
 
 #include <map>
 #include <string>
@@ -9,6 +9,7 @@ using namespace std;
 
 #include "Record_Cell.h"
 #include "regex.h"
+#include "Tokenizer.h"
 
 typedef map< string, vector<Record_Cell> > Table;
 typedef map<string, string> Name_Mapping_Relation;
@@ -25,8 +26,13 @@ extern const string NoNeed;
 extern string __alias;
 extern vector<vector<Record_Cell> > pattern_spec;
 extern const char* text;
-void globalInit();
+extern int group_num;
+
+extern map<int, int> __isgroup;
 
 extern ofstream ofs;
+extern Tokenizer *tokenizer;
+
+void globalInit();
 
 #endif
