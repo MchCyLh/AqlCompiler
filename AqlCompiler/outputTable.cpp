@@ -14,7 +14,7 @@ void fengexian(int length) {
 }
 
 //打印分割线
-void totalfengexian(int* maxlen, int colnumsize) {
+void totalfengexian(vector<int> maxlen, int colnumsize) {
 	for (int i = 0; i < colnumsize; i++) {
 		fengexian(maxlen[i]-1);
 	}
@@ -51,17 +51,19 @@ void outputTable(string tablename, Table &table) {
     ofs << "View: " << tablename << endl;
 	cout << "View: " << tablename << endl;
 	map<string, vector<Record_Cell> >::iterator it;
-	string* colnumname = new string[colnumsize];   //列名
-	vector<Record_Cell>* v = new vector<Record_Cell>[colnumsize];   //每一列的元素
-	int* maxlen = new int[colnumsize];
+	vector<string> colnumname;
+	vector<vector<Record_Cell> > v;   //每一列的元素
+	vector<int> maxlen;
+	//int* maxlen = new int[colnumsize];
 	int index = 0;
 	int maxVectorSize = 0;
 	for (it = table.begin(); it != table.end(); it++) {
-		v[index] = it->second;
-		colnumname[index] = it->first;
+		v.push_back(it->second);
+		colnumname.push_back(it->first);
 		if (v[index].size() > maxVectorSize)
 			maxVectorSize = v[index].size();
-		maxlen[index] = getMaxLength(v[index]);
+		//maxlen[index] = getMaxLength(v[index]);
+		maxlen.push_back(getMaxLength(v[index]));
 		index++;
 	}
 

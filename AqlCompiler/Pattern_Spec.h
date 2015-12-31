@@ -12,10 +12,10 @@ class Pattern_Spec :
 public:
     Stmt *stmt1, *stmt2;
     Pattern_Spec() {}
-    ~Pattern_Spec() {
-        delete stmt1; stmt1 = Stmt::Null;
-        delete stmt2; stmt2 = Stmt::Null;
-    }
+	~Pattern_Spec() {
+		delete stmt1; stmt1 = Stmt::Null;
+		delete stmt2; stmt2 = Stmt::Null;
+	}
     void init(Stmt *s1, Stmt *s2) { stmt1 = s1; stmt2 = s2; }
 	void gen(){
 		stmt2->gen();
@@ -49,6 +49,9 @@ public:
 			return;
 		}
 		else{
+			if (pattern_spec[deep].empty()){//empty list
+				return; 
+			}
 			if (pattern_spec[deep][0].content == ""){//<Token>{1,2}
 				dfs(deep + 1, path, t1 + pattern_spec[deep][0].begin, t2 + pattern_spec[deep][0].end);
 			}

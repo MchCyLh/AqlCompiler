@@ -44,6 +44,14 @@ public:
         if (look != Token::Null && !(look->tag == Tag::ID || look->tag == Tag::REG || look->tag == Tag::NUM)) {
             delete look; look = Token::Null;
         }
+		if (look != Token::Null && look->tag == Tag::NUM) {
+			Num * num = static_cast<Num *>(look);
+			cout << num->value << " " << num->get_start_num() << " " << num->get_stop_num() << endl;
+		}
+		else if (look != Token::Null){
+			Word *word = static_cast<Word *> (look);
+			cout << word->lexeme << " " << word->get_start_num() << " " << word->get_stop_num() << endl;
+		}
         look = lex->scan();
     } // 移动到下一个Token
     void match(int t) { // 匹配Token类型是否为t
@@ -140,8 +148,8 @@ public:
     }
 
     Stmt *alias() { // alias -> as ID | e
-        Alias *a = new Alias();
         if (look->tag == Tag::AS) {
+			Alias *a = new Alias();
             move();
             Token *t = look;
             match(Tag::ID);
@@ -294,6 +302,7 @@ public:
             match('>');
         }
 		if (s == Stmt::Null && t==Token::Null){
+			delete a; a = Atom::Null;
 			return Stmt::Null;
 		}
         a->init(s, t);

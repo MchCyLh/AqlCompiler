@@ -9,7 +9,8 @@ class Num :
 public:
     int value;
     Num(int v) : Token(Tag::NUM), value(v) {}
-	string tostr(){
+	~Num() {}
+	/*string tostr(){
 		string ans;
 		string temp;
 		int x = value;
@@ -21,7 +22,7 @@ public:
 			ans.push_back(temp[i]);
 		}
 		return ans;
-	}
+	}*/
 };
 
 #endif

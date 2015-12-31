@@ -10,6 +10,7 @@ class Word :
 public:
     string lexeme = "";
     Word(string s, int tag) : Token(tag), lexeme(s) {}
+	~Word() {}
 };
 
 typedef Word Id;

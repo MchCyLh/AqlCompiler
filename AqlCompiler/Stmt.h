@@ -14,9 +14,8 @@ public:
     Stmt() {}
     static Stmt * Null; // ±Ì æø’”Ôæ‰
     virtual void gen() {}
-    virtual void Delete() {}
 
-    ~Stmt() {}
+    virtual ~Stmt() {}
 };
 
 #endif
